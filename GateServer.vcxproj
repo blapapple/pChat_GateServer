@@ -105,6 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,20 +129,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConfigMgr.cpp" />
     <ClCompile Include="CServer.cpp" />
     <ClCompile Include="GateServer.cpp" />
     <ClCompile Include="HttpConnection.cpp" />
     <ClCompile Include="LogicSystem.cpp" />
+    <ClCompile Include="message.grpc.pb.cc" />
+    <ClCompile Include="message.pb.cc" />
+    <ClCompile Include="VerifyGrpcClient.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConfigMgr.h" />
     <ClInclude Include="CServer.h" />
     <ClInclude Include="const.h" />
     <ClInclude Include="HttpConnection.h" />
     <ClInclude Include="LogicSystem.h" />
+    <ClInclude Include="message.grpc.pb.h" />
+    <ClInclude Include="message.pb.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="VerifyGrpcClient.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="config.ini" />
+    <None Include="message.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

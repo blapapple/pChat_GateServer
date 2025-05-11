@@ -1,11 +1,13 @@
 ﻿#include "CServer.h"
-
+#include "ConfigMgr.h"
 /*
  * 这是一个简单的服务器示例，使用线程池处理传入的连接。
  * 服务器使用Boost.Asio进行异步I/O操作，并使用线程池并发处理请求。
  */
 int main()
 {
+	ConfigMgr gConfigMgr;
+	std::string gate_port_str = gConfigMgr["GateServer"]["port"];
 	try
 	{
 		unsigned short port = static_cast<unsigned short>(8080);
@@ -19,7 +21,7 @@ int main()
 			ioc.stop();
 			});
 
-		
+
 		std::make_shared<CServer>(ioc, port)->Start();
 		std::cout << "Server is running on port " << port << std::endl;
 		ioc.run();

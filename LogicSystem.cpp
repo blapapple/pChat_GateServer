@@ -1,5 +1,6 @@
 #include "LogicSystem.h"
 #include "HttpConnection.h"
+#include "VerifyGrpcClient.h"
 
 /*
  * 根据路径注册GET请求的处理函数
@@ -49,8 +50,9 @@ LogicSystem::LogicSystem() {
 		}
 
 		auto email = src_root["email"].asString();
+		GetVarifyRsp rsp = VerifyGrpcClient::GetInstance()->GetVarifyCode(email);
 		std::cout << "email is: " << email << std::endl;
-		root["error"] = ErrorCodes::Success;
+		root["error"] = rsp.error();
 		root["email"] = src_root["email"];
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
