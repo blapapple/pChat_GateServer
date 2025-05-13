@@ -46,11 +46,16 @@ public:
 		return *this;
 	}
 
-	ConfigMgr();
 	ConfigMgr(const ConfigMgr& src) {
 		_config_map = src._config_map;
 	}
+
+	static ConfigMgr& Inst() {
+		static ConfigMgr config_mgr;
+		return config_mgr;
+	}
 private:
+	ConfigMgr();
 	std::map<std::string, SectionInfo> _config_map;
 };
 

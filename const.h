@@ -18,8 +18,12 @@
 #include <memory>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/ini_parser.hpp>
+#include <queue>
+#include <mutex>
+#include <cassert>
 
 #include "Singleton.h"
+#include "hiredis.h"
 
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
@@ -32,6 +36,3 @@ enum ErrorCodes {
 	Error_Json = 1001,
 	RPCFailed = 1002,
 };
-
-class ConfigMgr;
-extern ConfigMgr gConfigMgr;
