@@ -30,7 +30,6 @@ void TestRedisMgr() {
 
 int main()
 {
-	TestRedisMgr();
 	ConfigMgr& gConfigMgr = ConfigMgr::Inst();
 	std::string gate_port_str = gConfigMgr["GateServer"]["port"];
 	try

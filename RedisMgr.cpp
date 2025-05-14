@@ -14,6 +14,7 @@ bool RedisMgr::Get(const std::string& key, std::string& value) {
 	auto connect = _con_pool->getConnection();
 	if (connect == nullptr)
 	{
+		std::cout << "no connection" << std::endl;
 		return false;
 	}
 	auto reply = (redisReply*)redisCommand(connect, "GET %s", key.c_str());
