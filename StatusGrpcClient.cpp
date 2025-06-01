@@ -26,7 +26,7 @@ StatusGrpcClient::StatusGrpcClient()
 	auto& gCfgMgr = ConfigMgr::Inst();
 	std::string host = gCfgMgr["StatusServer"]["Host"];
 	std::string port = gCfgMgr["StatusServer"]["Port"];
-	pool_.reset(new StatusConPool(5, host, port));
+	pool_.reset(new StatusConPool(30, host, port));
 }
 
 StatusConPool::StatusConPool(size_t poolSize, std::string host, std::string port) : _poolSize(poolSize), _host(host),

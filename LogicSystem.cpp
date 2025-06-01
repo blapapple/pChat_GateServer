@@ -219,7 +219,7 @@ LogicSystem::LogicSystem() {
 		auto pwd = src_root["passwd"].asString();
 		UserInfo userInfo;
 
-		//查询数据库判断用户名和邮箱是否匹配
+		//根据邮箱和密码查询数据库是否匹配用户，若匹配则返回用户信息
 		bool pwd_valid = MysqlMgr::GetInstance()->CheckPwd(email, pwd, userInfo);
 		if (!pwd_valid) {
 			std::cout << " user pwd not match" << std::endl;
@@ -245,6 +245,7 @@ LogicSystem::LogicSystem() {
 		root["token"] = reply.token();
 		root["host"] = reply.host();
 		root["port"] = reply.port();
+		std::cout << "host is " << reply.host() << " ; port is " << reply.port() << std::endl;
 		std::string jsonstr = root.toStyledString();
 		beast::ostream(connection->_response.body()) << jsonstr;
 		return true;
